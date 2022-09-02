@@ -45,7 +45,12 @@ class SimpleTree<T> {
         }
 
         NodeToDelete.Parent.Children.remove(NodeToDelete);
+        if (NodeToDelete.Parent.Children.isEmpty()) {
+            NodeToDelete.Parent.Children = null;
+        }
         NodeToDelete.Parent = null;
+
+
     }
 
     public List<SimpleTreeNode<T>> GetAllNodes() {

@@ -27,38 +27,14 @@ public class Task1 {
         SimpleTreeNode<Integer> Node87 = new SimpleTreeNode<>(87, Node78);
         treeForTest.AddChild(Node78, Node87);
         print(treeForTest);
-        System.out.println("Count = " + treeForTest.Count());
-        treeForTest.DeleteNode(Node8);
-        System.out.println("Count = " + treeForTest.Count());
+        treeForTest.DeleteNode(Node78);
         print(treeForTest);
-        SimpleTreeNode<Integer> Node755 = new SimpleTreeNode<>(755, Node7);
-        treeForTest.AddChild(Node7, Node755);
+        treeForTest.DeleteNode(Node77);
         print(treeForTest);
-        System.out.println("Leaf = " + treeForTest.LeafCount());
-        treeForTest.DeleteNode(Node88);
+        treeForTest.DeleteNode(Node79);
+        System.out.println(treeForTest.Root.Children);
         print(treeForTest);
-        System.out.println("Leaf = " + treeForTest.LeafCount());
-        SimpleTreeNode<Integer> Node5 = new SimpleTreeNode<>(5, Node87);
-        treeForTest.AddChild(Node87, Node5);
-        treeForTest.AddChild(Node87, Node5);
-        treeForTest.AddChild(Node87, Node5);
-        print(treeForTest);
-        System.out.println("Leaf = " + treeForTest.LeafCount());
-        treeForTest.MoveNode(Node87, Node755);
-        print(treeForTest);
-        System.out.println(Node755.Children.size());
-        treeForTest.MoveNode(Node77, new SimpleTreeNode<>(898, root));
-        print(treeForTest);
-        System.out.println(Node755.Children.size());
-        List<SimpleTreeNode<Integer>> listFive = treeForTest.FindNodesByValue(111);
-        for (int i = 0; i < listFive.size(); i++) {
-            System.out.print(listFive.get(i).NodeValue + " ");
-        }
-        print(treeForTest);
-        Map<SimpleTreeNode<Integer>, Integer> mapNodeLevels = treeForTest.writeLevel();
-        for (SimpleTreeNode<Integer> node : mapNodeLevels.keySet()) {
-            System.out.println("key = " + node.NodeValue + " level = " + mapNodeLevels.get(node));
-        }
+
 
 
     }
