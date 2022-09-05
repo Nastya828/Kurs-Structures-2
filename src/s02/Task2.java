@@ -81,6 +81,9 @@ public class Task2 {
         System.out.println("Delete 24: " + tree.DeleteNodeByKey(24));
         System.out.println("PRINT, size = " + tree.Count());
         routeTree(root);
+        System.out.println("Delete root: " + tree.DeleteNodeByKey(100));
+        System.out.println("PRINT, size = " + tree.Count());
+        routeTree(root);
     }
 
     static void routeTree(BSTNode<String> head) {

@@ -118,6 +118,9 @@ class BST<T> {
 
 
     public boolean DeleteNodeByKey(int key) {
+        if (this.Root.NodeKey == key) {
+            return false;
+        }
         BSTFind<T> nodeWithKey = FindNodeByKey(key);
         if (!nodeWithKey.NodeHasKey) {
             return false;
