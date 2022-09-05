@@ -85,6 +85,9 @@ class BST<T> {
 
 
     public boolean AddKeyValue(int key, T val) {
+        if(this.Root == null){
+            this.Root = new BSTNode<>(key, val,null);
+        }
         BSTFind<T> placeForNode = FindNodeByKey(key);
 
         if (placeForNode.NodeHasKey) {
@@ -119,7 +122,8 @@ class BST<T> {
 
     public boolean DeleteNodeByKey(int key) {
         if (this.Root.NodeKey == key) {
-            return false;
+            this.Root = null;
+            return true;
         }
         BSTFind<T> nodeWithKey = FindNodeByKey(key);
         if (!nodeWithKey.NodeHasKey) {
@@ -180,6 +184,9 @@ class BST<T> {
 
 
     public int Count() {
+        if(this.Root == null){
+            return 0;
+        }
         BSTNode<T> head = this.Root;
         List<BSTNode<T>> listForCounter = new ArrayList<>();
         routeTree(head, listForCounter);
@@ -189,7 +196,7 @@ class BST<T> {
     private void routeTree(BSTNode<T> head, List<BSTNode<T>> listForCounter) {
 
         listForCounter.add(head);
-        if (head.LeftChild == null && head.RightChild == null) {
+        if (head==null || (head.LeftChild == null && head.RightChild == null)) {
             return;
         }
         if (head.LeftChild != null) {

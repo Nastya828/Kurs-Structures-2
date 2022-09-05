@@ -50,7 +50,7 @@ public class Task2 {
         routeTree(root);
         System.out.println("Delete 200: " + tree.DeleteNodeByKey(200));
         System.out.println("PRINT, size = " + tree.Count());
-       // routeTree(root);
+        // routeTree(root);
         System.out.println("Delete 6: " + tree.DeleteNodeByKey(6));
         System.out.println("PRINT, size = " + tree.Count());
         routeTree(root);
@@ -80,26 +80,37 @@ public class Task2 {
         routeTree(root);
         System.out.println("Delete 24: " + tree.DeleteNodeByKey(24));
         System.out.println("PRINT, size = " + tree.Count());
-        routeTree(root);
+        routeTree(tree.Root);
         System.out.println("Delete root: " + tree.DeleteNodeByKey(100));
         System.out.println("PRINT, size = " + tree.Count());
-        routeTree(root);
+        routeTree(tree.Root);
+        tree.AddKeyValue(99, "root");
+        System.out.println("PRINT, size = " + tree.Count());
+        routeTree(tree.Root);
+        System.out.println("Delete root: " + tree.DeleteNodeByKey(99));
+        System.out.println("PRINT, size = " + tree.Count());
+        routeTree(tree.Root);
     }
 
     static void routeTree(BSTNode<String> head) {
-
-        if (head.Parent != null) {
-            System.out.println("\nparent.key = " + head.Parent.NodeKey + " value =" + head.Parent.NodeValue);
+        if (head == null) {
+            return;
         }
         if (head != null) {
             System.out.println(" head = " + head.NodeKey + " Value = " + head.NodeValue);
         }
+
+        if (head.Parent != null) {
+            System.out.println("\nparent.key = " + head.Parent.NodeKey + " value =" + head.Parent.NodeValue);
+        }
+
         if (head.RightChild != null) {
             System.out.println(" Right = " + head.RightChild.NodeKey + " Value = " + head.RightChild.NodeValue);
         }
         if (head.LeftChild != null) {
             System.out.println(" Left = " + head.LeftChild.NodeKey + " Value = " + head.LeftChild.NodeValue);
         }
+
         System.out.println("END");
 
         if (head.LeftChild == null && head.RightChild == null) {
