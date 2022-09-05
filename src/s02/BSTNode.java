@@ -48,6 +48,7 @@ class BST<T> {
         return searchRec(head, key, result);
     }
 
+
     private BSTFind<T> searchRec(BSTNode<T> head, int key, BSTFind<T> result) {
 
         if (key == head.NodeKey) {
@@ -57,7 +58,7 @@ class BST<T> {
             return result;
 
         }
-        if (key >= head.NodeKey && head.RightChild == null) {
+        if (key > head.NodeKey && head.RightChild == null) {
             result.Node = head;
             result.NodeHasKey = false;
             result.ToLeft = false;
@@ -76,7 +77,7 @@ class BST<T> {
             searchRec(head.LeftChild, key, result);
         }
 
-        if (key >= head.NodeKey) {
+        if (key > head.NodeKey) {
             searchRec(head.RightChild, key, result);
         }
 
@@ -85,14 +86,16 @@ class BST<T> {
 
 
     public boolean AddKeyValue(int key, T val) {
-        if(this.Root == null){
-            this.Root = new BSTNode<>(key, val,null);
+        if (this.Root == null) {
+            this.Root = new BSTNode<>(key, val, null);
+            return true;
         }
-        BSTFind<T> placeForNode = FindNodeByKey(key);
 
+        BSTFind<T> placeForNode = FindNodeByKey(key);
         if (placeForNode.NodeHasKey) {
             return false;
         }
+
         if (placeForNode.ToLeft) {
             placeForNode.Node.LeftChild = new BSTNode<>(key, val, placeForNode.Node);
         } else {
@@ -184,7 +187,7 @@ class BST<T> {
 
 
     public int Count() {
-        if(this.Root == null){
+        if (this.Root == null) {
             return 0;
         }
         BSTNode<T> head = this.Root;
@@ -196,7 +199,7 @@ class BST<T> {
     private void routeTree(BSTNode<T> head, List<BSTNode<T>> listForCounter) {
 
         listForCounter.add(head);
-        if (head==null || (head.LeftChild == null && head.RightChild == null)) {
+        if (head == null || (head.LeftChild == null && head.RightChild == null)) {
             return;
         }
         if (head.LeftChild != null) {
