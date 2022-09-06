@@ -46,6 +46,13 @@ class BST<T> {
     public ArrayList<BSTNode> WideAllNodes() {
         ArrayList<BSTNode> resultWide = new ArrayList<>();
         int index = 0;
+        if (this.Root == null) {
+            return resultWide;
+        }
+        if (this.Root.RightChild == null && this.Root.LeftChild == null) {
+            resultWide.add(this.Root);
+            return resultWide;
+        }
         resultWide.add(index, this.Root);
         routeWide(resultWide, index);
         return resultWide;
@@ -64,7 +71,6 @@ class BST<T> {
         }
         routeWide(resultWide, index + 1);
     }
-
 
 
     public ArrayList<BSTNode> DeepAllNodes(int order) {
@@ -90,7 +96,7 @@ class BST<T> {
     }
 
     private void postOrder(BSTNode head, ArrayList<BSTNode> resultDeep) {
-        if (head == null)  {
+        if (head == null) {
             return;
         }
         if (head.LeftChild != null) {
@@ -104,7 +110,7 @@ class BST<T> {
     }
 
     private void inOrder(BSTNode head, ArrayList<BSTNode> resultDeep) {
-        if (head == null)  {
+        if (head == null) {
             return;
         }
         if (head.LeftChild != null) {
@@ -118,7 +124,7 @@ class BST<T> {
     }
 
     private void preOrder(BSTNode head, ArrayList<BSTNode> resultDeep) {
-        if (head == null)  {
+        if (head == null) {
             return;
         }
         resultDeep.add(head);
