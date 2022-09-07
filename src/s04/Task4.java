@@ -2,7 +2,7 @@ package s04;
 
 public class Task4 {
     public static void main(String[] args) {
-        aBST tree = new aBST(6);
+        aBST tree = new aBST(0);
         System.out.println(tree);
         System.out.println("Found index 84 = " + tree.FindKeyIndex(84));
         System.out.println("Found index 51 = " + tree.FindKeyIndex(51));
