@@ -1,0 +1,64 @@
+package s04;
+
+public class Task4 {
+    public static void main(String[] args) {
+        aBST tree = new aBST(6);
+        System.out.println(tree);
+        System.out.println("Found index 84 = " + tree.FindKeyIndex(84));
+        System.out.println("Found index 51 = " + tree.FindKeyIndex(51));
+        System.out.println(tree);
+        System.out.println("Found index 50 = " + tree.FindKeyIndex(50));
+        System.out.println("Add Index 50 = " + tree.AddKey(50));
+        System.out.println(tree);
+        System.out.println("Found index 25 = " + tree.FindKeyIndex(25));
+        System.out.println("Add Index 25 = " + tree.AddKey(25));
+        System.out.println(tree);
+        System.out.println("Found index 75 = " + tree.FindKeyIndex(75));
+        System.out.println("Add Index 75 = " + tree.AddKey(75));
+        System.out.println(tree);
+        System.out.println("Found index 37 = " + tree.FindKeyIndex(37));
+        System.out.println("Add Index 37 = " + tree.AddKey(37));
+        System.out.println(tree);
+        System.out.println("Found index 62 = " + tree.FindKeyIndex(62));
+        System.out.println("Add Index 62 = " + tree.AddKey(62));
+        System.out.println(tree);
+        System.out.println("Found index 84 = " + tree.FindKeyIndex(84));
+        System.out.println("Add Index 84 = " + tree.AddKey(84));
+        System.out.println(tree);
+        System.out.println("Found index 31 = " + tree.FindKeyIndex(31));
+        System.out.println("Add Index 31 = " + tree.AddKey(31));
+        System.out.println(tree);
+        System.out.println("Found index 43 = " + tree.FindKeyIndex(43));
+        System.out.println("Add Index 43 = " + tree.AddKey(43));
+        System.out.println(tree);
+        System.out.println("Found index 55 = " + tree.FindKeyIndex(55));
+        System.out.println("Add Index 55 = " + tree.AddKey(55));
+        System.out.println(tree);
+        System.out.println("Found index 92 = " + tree.FindKeyIndex(92));
+        System.out.println("Add Index 92 = " + tree.AddKey(92));
+        System.out.println(tree);
+        System.out.println("Found index 20 = " + tree.FindKeyIndex(20));
+        System.out.println("Add Index 20 = " + tree.AddKey(20));
+        System.out.println(tree);
+        System.out.println("Found index 15 = " + tree.FindKeyIndex(15));
+        System.out.println("Add Index 15 = " + tree.AddKey(15));
+        System.out.println(tree);
+        System.out.println("Found index 22 = " + tree.FindKeyIndex(22));
+        System.out.println("Add Index 22 = " + tree.AddKey(22));
+        System.out.println(tree);
+        System.out.println("Found index 63 = " + tree.FindKeyIndex(63));
+        System.out.println("Add Index 63 = " + tree.AddKey(63));
+        System.out.println(tree);
+        System.out.println("Found index 80 = " + tree.FindKeyIndex(80));
+        System.out.println("Add Index 80 = " + tree.AddKey(80));
+        System.out.println(tree);
+        System.out.println("Found index 82 = " + tree.FindKeyIndex(82));
+        System.out.println("Add Index 82 = " + tree.AddKey(82));
+        System.out.println(tree);
+        System.out.println("Found index 22 = " + tree.FindKeyIndex(22));
+        System.out.println("Found index 50 = " + tree.FindKeyIndex(50));
+        System.out.println("Found index 37 = " + tree.FindKeyIndex(37));
+        System.out.println("Found index 77 = " + tree.FindKeyIndex(77));
+        System.out.println("Found index 84 = " + tree.FindKeyIndex(84));
+    }
+}
