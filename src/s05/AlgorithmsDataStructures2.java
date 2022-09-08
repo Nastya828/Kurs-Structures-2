@@ -44,7 +44,9 @@ public class AlgorithmsDataStructures2 {
 
         int number = 0;
         for (int i : resultMap.keySet()) {
-            result[number] = i;
+            if (number < result.length) {
+                result[number] = i;
+            }
             number++;
         }
 
