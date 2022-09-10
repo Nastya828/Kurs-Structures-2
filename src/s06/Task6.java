@@ -5,10 +5,10 @@ import java.util.Arrays;
 
 public class Task6 {
     public static void main(String[] args) {
-         int[] a = {1, 9, 77, 68, 44, -9, 6, -10, 5, 7, 22, 70, 46, 80, 2, 2, 2};
+         //int[] a = {1, 9, 77, 68, 44, -9, 6, -10, 5, 7, 22, 70, 46, 80, 2, 2, 2};
+        int[] a = { 1, 1};
         Arrays.sort(a);
         System.out.println(Arrays.toString(a));
-        //int[] a = { 1, 1, 2};
         //int[] a = null;
         BalancedBST tree = new BalancedBST();
 

@@ -34,6 +34,7 @@ class BalancedBST {
             return;
         }
         Arrays.sort(a);
+
         F(null, 0, a);
     }
 
