@@ -11,9 +11,7 @@ class Heap {
     public void MakeHeap(int[] a, int depth) {
         int tree_size = (int) (Math.pow(2, (depth + 1))) - 1;
         HeapArray = new int[tree_size];
-        for (int i = 0; i < tree_size; i++) {
-            HeapArray[i] = -1;
-        }
+
         if (a == null) {
             return;
         }
@@ -64,16 +62,16 @@ class Heap {
         if (i >= HeapArray.length) {
             return -1;
         }
-        if (HeapArray[i] == -1) {
+        if (HeapArray[i] == 0) {
             return i;
         }
 
-        if (HeapArray[i] != -1 && key < HeapArray[i]) {
+        if (HeapArray[i] != 0 && key < HeapArray[i]) {
             i = 2 * i + 1;
             return F(key, i);
         }
 
-        if (HeapArray[i] != -1 && key > HeapArray[i]) {
+        if (HeapArray[i] != 0 && key > HeapArray[i]) {
             i = 2 * i + 2;
             return F(key, i);
         }
@@ -85,7 +83,7 @@ class Heap {
     public int GetMax() {
         int result = HeapArray[0];
         HeapArray[0] = HeapArray[HeapArray.length - 1];
-        HeapArray[HeapArray.length - 1] = -1;
+        HeapArray[HeapArray.length - 1] = 0;
         for (int i = (HeapArray.length / 2); i >= 0; i--) {
             heapIfy(i);
         }
@@ -95,7 +93,7 @@ class Heap {
 
     public boolean Add(int key) {
         int index = searchPlace();
-        if (index == 0 && HeapArray[0] != -1) {
+        if (index == 0 && HeapArray[0] != 0) {
             return false;
         }
         if (index == 0) {
@@ -111,7 +109,7 @@ class Heap {
 
     private int searchPlace() {
         for (int i = 0; i < HeapArray.length; i++) {
-            if (HeapArray[i] == -1) {
+            if (HeapArray[i] == 0) {
                 return i;
 
             }
