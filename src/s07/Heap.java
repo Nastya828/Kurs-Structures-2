@@ -1,6 +1,5 @@
 package s07;
 
-import java.util.*;
 
 class Heap {
     public int[] HeapArray;
@@ -23,8 +22,12 @@ class Heap {
             return;
         }
 
-        Arrays.sort(a);
-        F(a, 0);
+        for (int key : a) {
+            int x = F(key, 0);
+            if (x != -1) {
+                HeapArray[x] = key;
+            }
+        }
         for (int i = (tree_size / 2); i >= 0; i--) {
             heapIfy(i);
         }
@@ -57,26 +60,25 @@ class Heap {
         }
     }
 
-    private void F(int[] a, int i) {
+    private int F(int key, int i) {
         if (i >= HeapArray.length) {
-            return;
+            return -1;
         }
-        if (a.length == 0) {
-            return;
+        if (HeapArray[i] == -1) {
+            return i;
         }
 
-        int middle = (int) Math.floor(a.length / 2);
-
-        while (middle > 0 && a[middle] == a[middle - 1]) {
-            middle--;
+        if (HeapArray[i] != -1 && key < HeapArray[i]) {
+            i = 2 * i + 1;
+            return F(key, i);
         }
-        HeapArray[i] = a[middle];
 
-        int[] leftSubtree = Arrays.copyOfRange(a, 0, middle);
-        F(leftSubtree, 2 * i + 1);
+        if (HeapArray[i] != -1 && key > HeapArray[i]) {
+            i = 2 * i + 2;
+            return F(key, i);
+        }
 
-        int[] rightSubtree = Arrays.copyOfRange(a, middle + 1, a.length);
-        F(rightSubtree, 2 * i + 2);
+        return i;
     }
 
 
