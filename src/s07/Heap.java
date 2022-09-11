@@ -1,6 +1,8 @@
 package s07;
 
 
+import java.util.Arrays;
+
 class Heap {
     public int[] HeapArray;
 
@@ -20,64 +22,40 @@ class Heap {
             return;
         }
 
-        for (int key : a) {
-            int x = F(key, 0);
-            if (x != -1) {
-                HeapArray[x] = key;
-            }
-        }
         for (int i = (tree_size / 2); i >= 0; i--) {
-            heapIfy(i);
+            heapIfy(a, tree_size, i);
         }
+        HeapArray = Arrays.copyOf(a, tree_size);
 
     }
 
-    private void heapIfy(int index) {
+    private void heapIfy(int[] a, int tree_size, int index) {
         int rightChild;
         int leftChild;
         int largestChild;
 
-        for (int i = 0; i < HeapArray.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             leftChild = 2 * index + 1;
             rightChild = 2 * index + 2;
             largestChild = index;
 
-            if (leftChild < HeapArray.length && HeapArray[leftChild] > HeapArray[largestChild]) {
+            if (leftChild < a.length && a[leftChild] > a[largestChild]) {
                 largestChild = leftChild;
             }
-            if (rightChild < HeapArray.length && HeapArray[rightChild] > HeapArray[largestChild]) {
+            if (rightChild < a.length && a[rightChild] > a[largestChild]) {
                 largestChild = rightChild;
             }
             if (largestChild == index) {
                 return;
             }
-            int temp = HeapArray[index];
-            HeapArray[index] = HeapArray[largestChild];
-            HeapArray[largestChild] = temp;
+            int temp = a[index];
+            a[index] = a[largestChild];
+            a[largestChild] = temp;
             index = largestChild;
         }
     }
 
-    private int F(int key, int i) {
-        if (i >= HeapArray.length) {
-            return -1;
-        }
-        if (HeapArray[i] == 0) {
-            return i;
-        }
 
-        if (HeapArray[i] != 0 && key < HeapArray[i]) {
-            i = 2 * i + 1;
-            return F(key, i);
-        }
-
-        if (HeapArray[i] != 0 && key > HeapArray[i]) {
-            i = 2 * i + 2;
-            return F(key, i);
-        }
-
-        return i;
-    }
 
 
     public int GetMax() {
@@ -85,7 +63,7 @@ class Heap {
         HeapArray[0] = HeapArray[HeapArray.length - 1];
         HeapArray[HeapArray.length - 1] = 0;
         for (int i = (HeapArray.length / 2); i >= 0; i--) {
-            heapIfy(i);
+            heapIfy(HeapArray, HeapArray.length, i);
         }
         return result;
     }
@@ -102,7 +80,7 @@ class Heap {
         }
         HeapArray[index] = key;
         for (int i = (HeapArray.length / 2); i >= 0; i--) {
-            heapIfy(i);
+            heapIfy(HeapArray, HeapArray.length, i);
         }
         return true;
     }
