@@ -1,7 +1,6 @@
 package s01;
 
 import java.util.List;
-import java.util.Map;
 
 public class Task1 {
     public static void main(String[] args) {
