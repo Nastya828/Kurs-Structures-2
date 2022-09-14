@@ -1,6 +1,9 @@
 package s10;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.Stack;
 
 class Vertex {
     public int Value;
@@ -87,7 +90,7 @@ class SimpleGraph {
         ArrayList<Vertex> stackForWay = new ArrayList<>();
         clearVertexHits();
 
-        if (!IsEdge(VFrom, VTo) && VFrom == VTo) {
+        if (VFrom == VTo && !IsEdge(VFrom, VTo)) {
             return stackForWay;
         }
         if (VFrom == VTo && IsEdge(VFrom, VTo)) {
@@ -99,38 +102,37 @@ class SimpleGraph {
         return stackForWay;
     }
 
-    private void searchWay(ArrayList<Vertex> stackForWay, int VFrom, int VTo) {
-
-        if (IsEdge(VFrom, VTo)) {
-            stackForWay.add(vertex[VFrom]);
-            stackForWay.add(vertex[VTo]);
-            return;
-        }
-
+    private void searchWay(ArrayList<Vertex> list, int VFrom, int VTo) {
         vertex[VFrom].Hit = true;
-        stackForWay.add(vertex[VFrom]);
+        list.add(vertex[VFrom]);
 
-        if (stackForWay.isEmpty()) {
+        ArrayList<Integer> vertexNeib = listVertexD(VFrom);
+        if (vertexNeib.isEmpty()) {
             return;
         }
 
-        for (int i = 0; i < vertex.length; i++) {
-            if (m_adjacency[i][VFrom] == 1 && i == VTo) {
-                vertex[i].Hit = true;
-                stackForWay.add(vertex[i]);
+        for (Integer i : vertexNeib) {
+            if (i == VTo) {
+                vertex[VTo].Hit = true;
+                list.add(vertex[i]);
                 return;
             }
-            if (m_adjacency[i][VFrom] == 1 && !vertex[i].Hit) {
-                vertex[i].Hit = true;
-                searchWay(stackForWay, i, VTo);
+        }
+        for (Integer i : vertexNeib) {
+            if (!vertex[i].Hit) {
+                searchWay(list, i, VTo);
             }
-
         }
-        if (!stackForWay.isEmpty() && stackForWay.get(stackForWay.size() - 1).Value != vertex[VTo].Value) {
-            stackForWay.remove(stackForWay.size() - 1);
+    }
+
+    private ArrayList<Integer> listVertexD(int v) {
+        ArrayList<Integer> listVertex = new ArrayList<>();
+        for (int i = 0; i < m_adjacency.length; i++) {
+            if (m_adjacency[i][v] == 1) {
+                listVertex.add(i);
+            }
         }
-
-
+        return listVertex;
     }
 
     private void clearVertexHits() {

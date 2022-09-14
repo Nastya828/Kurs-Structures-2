@@ -6,7 +6,7 @@ public class Task10 {
         SimpleGraph graph = new SimpleGraph(5);
         System.out.println(graph);
         for (int i = 0; i < graph.max_vertex; i++) {
-            graph.AddVertex(i);
+            graph.AddVertex(i+100);
         }
         graph.AddEdge(0, 0);
         graph.AddEdge(1, 2);
@@ -15,8 +15,10 @@ public class Task10 {
         graph.AddEdge(0, 4);
 
         System.out.println(graph);
-
-        for(Vertex i : graph.DepthFirstSearch(4,0)){
+        int n = 1;
+        int m = 0;
+        System.out.println("From " + n + " to " + m);
+        for(Vertex i : graph.DepthFirstSearch(n,m)){
             System.out.print(i.Value + " ");
 
         }
