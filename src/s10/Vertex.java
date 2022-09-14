@@ -101,14 +101,21 @@ class SimpleGraph {
     }
 
     private void searchWay(ArrayList<Vertex> list, int VFrom, int VTo) {
-        vertex[VFrom].Hit = true;
-        list.add(vertex[VFrom]);
+
+        if (!vertex[VFrom].Hit) {
+            vertex[VFrom].Hit = true;
+            list.add(vertex[VFrom]);
+        }
 
         ArrayList<Integer> vertexNeib = listVertexD(VFrom);
         if (vertexNeib.isEmpty()) {
-            return;
+            list.remove(list.size() - 1);
+            if (list.isEmpty()) {
+                return;
+            } else {
+                searchWay(list, searchIndex(list.get(list.size() - 1)), VTo);
+            }
         }
-
         for (Integer i : vertexNeib) {
             if (i == VTo) {
                 vertex[VTo].Hit = true;
@@ -123,10 +130,19 @@ class SimpleGraph {
         }
     }
 
+    private int searchIndex(Vertex v) {
+        for (int i = 0; i < vertex.length; i++) {
+            if (v.equals(vertex[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     private ArrayList<Integer> listVertexD(int v) {
         ArrayList<Integer> listVertex = new ArrayList<>();
         for (int i = 0; i < m_adjacency.length; i++) {
-            if (m_adjacency[i][v] == 1) {
+            if (m_adjacency[i][v] == 1 && !vertex[i].Hit) {
                 listVertex.add(i);
             }
         }

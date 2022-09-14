@@ -10,8 +10,10 @@ public class Task10 {
         }
         graph.AddEdge(0, 0);
         graph.AddEdge(1, 2);
+        graph.AddEdge(1, 3);
         graph.AddEdge(2, 3);
-        graph.AddEdge(3, 4);
+        graph.AddEdge(2, 4);
+        graph.AddEdge(3, 3);
         graph.AddEdge(0, 4);
 
         System.out.println(graph);
