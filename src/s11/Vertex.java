@@ -1,4 +1,4 @@
-package s10;
+package s11;
 
 import java.util.ArrayList;
 
@@ -86,13 +86,11 @@ class SimpleGraph {
         }
         ArrayList<Vertex> stackForWay = new ArrayList<>();
         clearVertexHits();
-
         if (!IsEdge(VFrom, VTo) && VFrom == VTo) {
             return stackForWay;
         }
         if (VFrom == VTo && IsEdge(VFrom, VTo)) {
             stackForWay.add(vertex[VFrom]);
-            stackForWay.add(vertex[VTo]);
             return stackForWay;
         }
         searchWay(stackForWay, VFrom, VTo);
