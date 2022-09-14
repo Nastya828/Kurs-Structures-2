@@ -88,7 +88,7 @@ class SimpleGraph {
         ArrayList<Vertex> stackForWay = new ArrayList<>();
         clearVertexHits();
 
-        if (VFrom == VTo && !IsEdge(VFrom, VTo)) {
+        if (!IsEdge(VFrom, VTo) && VFrom == VTo) {
             return stackForWay;
         }
         if (VFrom == VTo && IsEdge(VFrom, VTo)) {
@@ -106,6 +106,11 @@ class SimpleGraph {
             vertex[VFrom].Hit = true;
             list.add(vertex[VFrom]);
         }
+        if (IsEdge(VFrom, VTo)) {
+            vertex[VTo].Hit = true;
+            list.add(vertex[VTo]);
+            return;
+        }
 
         ArrayList<Integer> vertexNeib = listVertexD(VFrom);
         if (vertexNeib.isEmpty()) {
@@ -116,18 +121,14 @@ class SimpleGraph {
                 searchWay(list, searchIndex(list.get(list.size() - 1)), VTo);
             }
         }
-        for (Integer i : vertexNeib) {
-            if (i == VTo) {
-                vertex[VTo].Hit = true;
-                list.add(vertex[i]);
-                return;
-            }
-        }
+
         for (Integer i : vertexNeib) {
             if (!vertex[i].Hit) {
                 searchWay(list, i, VTo);
             }
         }
+
+
     }
 
     private int searchIndex(Vertex v) {
