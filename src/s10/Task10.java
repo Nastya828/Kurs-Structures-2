@@ -12,13 +12,13 @@ public class Task10 {
         graph.AddEdge(1, 2);
         graph.AddEdge(1, 3);
         graph.AddEdge(2, 2);
-        graph.AddEdge(0, 0);
+        //graph.AddEdge(0, 0);
         graph.AddEdge(4, 3);
 
 
         System.out.println(graph);
         int n = 0;
-        int m = 4;
+        int m = 0;
         System.out.println("From " + n + " to " + m);
         for(Vertex i : graph.DepthFirstSearch(n,m)){
             System.out.print(i.Value + " ");
