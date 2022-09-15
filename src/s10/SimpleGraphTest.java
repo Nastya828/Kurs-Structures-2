@@ -27,14 +27,14 @@ class SimpleGraphTest {
             graph.AddVertex(i + 100);
         }
 
-        list.add(new Vertex(101));
         list.add(new Vertex(100));
-        list.add(new Vertex(102));
+        list.add(new Vertex(101));
+        //list.add(new Vertex(102));
         list.add(new Vertex(103));
         list.add(new Vertex(104));
 
         for (int i = 0; i < list.size(); i++) {
-            Assertions.assertTrue(list.get(i).Value == graph.DepthFirstSearch(1, 4).get(i).Value);
+            Assertions.assertTrue(list.get(i).Value == graph.DepthFirstSearch(0, 4).get(i).Value);
         }
 
         ArrayList<Vertex> list2 = new ArrayList<>();
