@@ -9,7 +9,7 @@ class SimpleGraphTest {
 
     @org.junit.jupiter.api.Test
     void depthFirstSearch() {
-        ArrayList<Vertex> list = new ArrayList<>();
+
         SimpleGraph graph = new SimpleGraph(5);
         graph.AddEdge(0,1);
         graph.AddEdge(0,2);
@@ -27,26 +27,25 @@ class SimpleGraphTest {
         graph.AddEdge(4,1);
         graph.AddEdge(4,3);
 
-        for (int i = 0; i < graph.max_vertex; i++) {
-            graph.AddVertex(i + 100);
-        }
+        graph.vertex[0] = new Vertex(100);
+        graph.vertex[1] = new Vertex(101);
+        graph.vertex[2] = new Vertex(102);
+        graph.vertex[3] = new Vertex(103);
+        graph.vertex[4] = new Vertex(104);
 
-        list.add(new Vertex(100));
-        list.add(new Vertex(101));
-        //list.add(new Vertex(102));
-        list.add(new Vertex(103));
-        list.add(new Vertex(104));
 
-        for (int i = 0; i < list.size(); i++) {
-            Assertions.assertTrue(list.get(i).Value == graph.DepthFirstSearch(0, 4).get(i).Value);
-        }
+        ArrayList<Vertex> listForTest = graph.DepthFirstSearch(0, 4);
 
-        ArrayList<Vertex> list2 = new ArrayList<>();
-        list2.add(new Vertex(100));
+       Assertions.assertTrue(listForTest.size() == 4);
+        Assertions.assertEquals(listForTest.get(0), graph.vertex[0]);
+       Assertions.assertTrue(listForTest.get(1).Value == 101);
+       Assertions.assertTrue(listForTest.get(2).Value == 103);
+       Assertions.assertTrue(listForTest.get(3).Value == 104);
 
-        for (int i = 0; i < list2.size(); i++) {
-            Assertions.assertTrue(list2.get(i).Value == graph.DepthFirstSearch(0, 0).get(i).Value);
-        }
+
+        ArrayList<Vertex> listForTest1 = graph.DepthFirstSearch(0, 0);
+        Assertions.assertTrue(listForTest1.size() == 1);
+        Assertions.assertEquals(listForTest.get(0), graph.vertex[0]);
 
     }
 }
