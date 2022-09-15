@@ -15,17 +15,18 @@ class SimpleGraphTest {
         graph.AddEdge(1, 2);
         graph.AddEdge(1, 3);
         graph.AddEdge(2, 2);
-        //graph.AddEdge(0, 0);
+        graph.AddEdge(0, 0);
         graph.AddEdge(4, 3);
         for (int i = 0; i < graph.max_vertex; i++) {
             graph.AddVertex(i + 100);
         }
 
         list.add(new Vertex(100));
-        list.add(new Vertex(101));
         list.add(new Vertex(100));
-
+//        list.add(new Vertex(100));
+//
         for (int i = 0; i < list.size(); i++) {
+
             Assertions.assertTrue(list.get(i).Value == graph.DepthFirstSearch(0, 0).get(i).Value);
         }
 

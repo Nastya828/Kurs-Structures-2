@@ -8,6 +8,17 @@ public class Task10 {
         for (int i = 0; i < graph.max_vertex; i++) {
             graph.AddVertex(i+100);
         }
+//        graph.AddEdge(0, 1);
+//        graph.AddEdge(0, 2);
+//        graph.AddEdge(0, 3);
+//
+//        graph.AddEdge(1, 3);
+//        graph.AddEdge(1, 4);
+//
+//        graph.AddEdge(2, 3);
+//
+//        graph.AddEdge(3, 3);
+//        graph.AddEdge(3, 4);
         graph.AddEdge(0, 1);
         graph.AddEdge(1, 2);
         graph.AddEdge(1, 3);
@@ -16,17 +27,13 @@ public class Task10 {
         graph.AddEdge(4, 3);
 
 
+
         System.out.println(graph);
-        int n = 0;
-        int m = 0;
+        int n = 1;
+        int m = 3;
         System.out.println("From " + n + " to " + m);
         for(Vertex i : graph.DepthFirstSearch(n,m)){
             System.out.print(i.Value + " ");
         }
-
-
-//        if(graph.DepthFirstSearch(3,1).isEmpty()){
-//            System.out.println(graph.DepthFirstSearch(3, 1));
-//        }
     }
 }

@@ -1,6 +1,7 @@
 package s10;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 class Vertex {
@@ -71,7 +72,6 @@ class SimpleGraph {
 
 
     public void RemoveEdge(int v1, int v2) {
-
         if (!IsEdge(v1, v2)) {
             return;
         }
@@ -82,63 +82,45 @@ class SimpleGraph {
     }
 
     public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo) {
+
         if (VFrom >= vertex.length || VTo >= vertex.length) {
             return new ArrayList<>();
         }
         ArrayList<Vertex> stackForWay = new ArrayList<>();
         clearVertexHits();
 
-//        if (!IsEdge(VFrom, VTo) && VFrom == VTo) {
-//            return stackForWay;
-//        }
+        if (!IsEdge(VFrom, VTo) && VFrom == VTo) {
+            return stackForWay;
+        }
         if (VFrom == VTo && IsEdge(VFrom, VTo)) {
             stackForWay.add(vertex[VFrom]);
             stackForWay.add(vertex[VTo]);
             return stackForWay;
         }
-        searchWay(stackForWay, VFrom, VTo);
+        if (!dfs(stackForWay, VFrom, VTo)) {
+            return new ArrayList<>();
+        }
+        stackForWay.add(vertex[VFrom]);
+        Collections.reverse(stackForWay);
         return stackForWay;
     }
 
-    private void searchWay(ArrayList<Vertex> list, int VFrom, int VTo) {
-
-        if (!vertex[VFrom].Hit) {
-            vertex[VFrom].Hit = true;
-            list.add(vertex[VFrom]);
+    private boolean dfs(ArrayList<Vertex> list, int VFrom, int VTo) {
+        if (vertex[VFrom] == vertex[VTo]) {
+            return true;
         }
-        if (IsEdge(VFrom, VTo)) {
-            vertex[VTo].Hit = true;
-            list.add(vertex[VTo]);
-            return;
-        }
-
-        ArrayList<Integer> vertexNeib = listVertexD(VFrom);
-        if (vertexNeib.isEmpty()) {
-            list.remove(list.size() - 1);
-            if (list.isEmpty()) {
-                return;
-            } else {
-                searchWay(list, searchIndex(list.get(list.size() - 1)), VTo);
+        vertex[VFrom].Hit = true;
+        for (Integer v : listVertexD(VFrom)) {
+            if (!vertex[v].Hit) {
+                if (dfs(list, v, VTo)) {
+                    list.add(vertex[v]);
+                    return true;
+                }
             }
         }
-
-        for (Integer i : vertexNeib) {
-            if (!vertex[i].Hit) {
-                searchWay(list, i, VTo);
-            }
-        }
-
-
+        return false;
     }
 
-    private int searchIndex(Vertex v) {
-        for (int i = 0; i < vertex.length; i++) {
-            if (v.equals(vertex[i])) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     private ArrayList<Integer> listVertexD(int v) {
         ArrayList<Integer> listVertex = new ArrayList<>();
