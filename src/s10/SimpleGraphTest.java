@@ -34,8 +34,6 @@ class SimpleGraphTest {
         list.add(new Vertex(104));
 
         for (int i = 0; i < list.size(); i++) {
-//            System.out.println(list.get(i).Value);
-//            System.out.println(graph.DepthFirstSearch(1, 4).get(i).Value);
             Assertions.assertTrue(list.get(i).Value == graph.DepthFirstSearch(1, 4).get(i).Value);
         }
 
@@ -43,8 +41,6 @@ class SimpleGraphTest {
         list2.add(new Vertex(100));
 
         for (int i = 0; i < list2.size(); i++) {
-            System.out.println(list2.get(i).Value);
-            System.out.println(graph.DepthFirstSearch(0, 0).get(i).Value);
             Assertions.assertTrue(list2.get(i).Value == graph.DepthFirstSearch(0, 0).get(i).Value);
         }
 
