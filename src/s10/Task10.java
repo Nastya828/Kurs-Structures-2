@@ -26,7 +26,7 @@ public class Task10 {
 
 
         System.out.println(graph);
-        int n = 0;
+        int n = 2;
         int m = 4;
         System.out.println("From " + n + " to " + m);
         for(Vertex i : graph.DepthFirstSearch(n,m)){
